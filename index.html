@@ -7,112 +7,144 @@
 <meta name="description" content="이두람의 프로젝트 모음">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
-:root{--bg:#f3f5f8;--panel:#fff;--ink:#1c2330;--sub:#5a6577;--line:#e1e6ee;--accent:#2457d6;--accent-bg:#eaf0fd;--green:#14804a;--amber:#a15c00}
+:root{--ink:#14171c;--sub:#5d6673;--line:#d9dee6;--desk:#eef1f5;--panel:#fff}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:24px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:16px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
-.page{max-width:1180px;margin:0 auto;padding:32px 24px 80px;display:grid;grid-template-columns:280px minmax(0,1fr);gap:28px;align-items:start}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor{animation:none!important;display:none}}
+body{margin:0;color:var(--ink);font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:16px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased;
+ background:var(--desk) radial-gradient(#c9d0da 1px,transparent 1.2px) 0 0/22px 22px}
+a{color:#2457d6;text-underline-offset:3px}
+a:focus-visible{outline:3px solid #2457d6;outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
 
-/* 왼쪽 */
-.side{position:sticky;top:24px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px}
-.side .photo{width:132px;height:176px;object-fit:cover;border-radius:8px;display:block;margin-bottom:16px}
-.side h1{font-size:26px;margin:0;letter-spacing:-.01em}
-.side .role{margin:2px 0 16px;color:var(--sub);font-size:15px}
-.contact{list-style:none;margin:0 0 20px;padding:0;font-size:14.5px}
-.contact li{padding:6px 0;border-bottom:1px solid var(--line)}
-.contact li:last-child{border-bottom:0}
-.contact span{display:block;color:var(--sub);font-size:12.5px;line-height:1.3}
-.contact a{overflow-wrap:anywhere}
-.side h2{font-size:13.5px;color:var(--sub);margin:0 0 8px;font-weight:600}
-.nav{list-style:none;margin:0 0 20px;padding:0;font-size:15px}
-.nav li{padding:7px 0;border-bottom:1px solid var(--line)}
-.nav li:last-child{border-bottom:0}
-.nav a{display:block;color:var(--ink);text-decoration:none;font-weight:600;line-height:1.4}
-.nav a:hover{color:var(--accent)}
-.nav .st{font-size:13px}
-.skills{margin:0;font-size:14px}
-.skills dt{font-weight:700;margin-top:8px}
-.skills dd{margin:0;color:var(--sub)}
+/* 작업 표시줄 */
+.task{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.task .wrap{display:flex;align-items:center;gap:20px;height:52px;font-size:15px}
+.task strong{font-size:17px;letter-spacing:-.01em}
+.task nav{margin-left:auto;display:flex;gap:18px}
+.task a{color:var(--ink);text-decoration:none;font-weight:600}
+.task a:hover{color:#2457d6}
 
-/* 상태 */
-.st{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--sub)}
-.st::before{content:"";width:7px;height:7px;border-radius:50%;background:#9aa5b5}
-.st.run{color:var(--green)}.st.run::before{background:var(--green)}
-.st.dev{color:var(--amber)}.st.dev::before{background:#d98300}
+/* 첫 화면 */
+.top{padding:44px 0 26px}
+.top .wrap{display:grid;grid-template-columns:300px minmax(0,1fr);gap:26px;align-items:stretch}
+.me{background:var(--panel);border:1.5px solid var(--ink);border-radius:14px;overflow:hidden;box-shadow:6px 6px 0 var(--ink)}
+.me .bar{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1.5px solid var(--ink);font-weight:700;font-size:14px;background:#fff}
+.me .in{padding:20px}
+.me img{width:118px;height:157px;object-fit:cover;border-radius:10px;border:1.5px solid var(--ink);display:block;margin-bottom:14px}
+.me h1{font-size:30px;line-height:1.2;margin:0;letter-spacing:-.02em}
+.me p{margin:4px 0 14px;color:var(--sub)}
+.me ul{list-style:none;margin:0;padding:0;font-size:14.5px}
+.me li{padding:5px 0;border-top:1px dashed var(--line)}
+.me li span{color:var(--sub);display:inline-block;width:54px}
 
-/* 프로젝트 */
-.proj{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:32px 36px;margin-bottom:24px}
-.proj header{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding-left:14px;border-left:4px solid var(--accent);margin-bottom:14px}
-.proj h2{font-size:26px;line-height:1.3;margin:0;letter-spacing:-.015em}
-.proj>p:first-of-type{font-size:17px;margin:0 0 16px}
-.proj p{margin:0 0 12px}
-.chips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px;padding:0}
-.chips li{font-size:13.5px;font-weight:600;background:var(--accent-bg);color:#1b46b0;padding:3px 10px;border-radius:5px}
+.board{position:relative;background:var(--panel);border:1.5px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;display:flex;flex-direction:column;min-height:400px}
+.board .bar{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1.5px solid var(--ink);font-weight:700;font-size:14px}
+.board .bar small{margin-left:auto;font-weight:500;color:var(--sub);font-size:13px}
+.stage{position:relative;flex:1;margin:16px;border-radius:10px;background:#f4f6f9;border:1px solid var(--line);touch-action:none}
+.mon{position:absolute;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:2px;padding:6px;border:2.5px solid var(--c);background:var(--t);border-radius:10px;color:var(--ink);text-decoration:none;cursor:grab;user-select:none;transition:box-shadow .15s,transform .15s}
+.mon:hover{box-shadow:0 6px 18px rgba(20,23,28,.16);transform:translateY(-2px);z-index:2}
+.mon.drag{cursor:grabbing;transition:none;z-index:3;box-shadow:0 10px 24px rgba(20,23,28,.22)}
+.mon b{font-size:clamp(13px,1.35vw,17px);line-height:1.3;letter-spacing:-.01em}
+.mon span{font-size:12.5px;color:var(--sub)}
+.mon em{font-style:normal;font-size:12px;margin-top:2px}
+.cursor{position:absolute;left:0;top:0;width:22px;height:22px;z-index:5;pointer-events:none;animation:tour 5.5s ease-in-out .6s 1 both}
+@keyframes tour{0%{transform:translate(18%,30%);opacity:0}8%{opacity:1;transform:translate(60px,120px)}30%{transform:translate(330px,90px)}52%{transform:translate(620px,150px)}72%{transform:translate(340px,270px)}90%{transform:translate(110px,300px);opacity:1}100%{transform:translate(110px,300px);opacity:0}}
+
+.st{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--sub)}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;background:#98a2b0}
+.st.run{color:#0f7a45}.st.run::before{background:#12a15a}
+.st.dev{color:#a15c00}.st.dev::before{background:#e08a00}
+
+/* 프로젝트 창 */
+main{padding:10px 0 70px}
+.win{background:var(--panel);border:1.5px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 var(--c);margin:34px 0;overflow:hidden}
+.win .bar{display:flex;align-items:center;gap:12px;padding:12px 18px;background:var(--t);border-bottom:1.5px solid var(--ink)}
+.win .dot{width:14px;height:14px;border-radius:4px;background:var(--c);flex:none}
+.win h2{font-size:clamp(19px,2.2vw,24px);margin:0;letter-spacing:-.015em;line-height:1.3}
+.ctl{margin-left:auto;display:flex;gap:14px;align-items:center}
+.ctl i{display:block;width:11px;height:11px;border:1.6px solid var(--ink);opacity:.55}
+.ctl i:first-child{height:0;border-width:1.6px 0 0;align-self:flex-end;margin-bottom:2px}
+.ctl i:last-child{border:0;position:relative}
+.ctl i:last-child::before,.ctl i:last-child::after{content:"";position:absolute;left:5px;top:-2px;width:1.6px;height:15px;background:var(--ink);transform:rotate(45deg)}
+.ctl i:last-child::after{transform:rotate(-45deg)}
+.win .body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px;padding:26px 28px 30px}
+.text>p:first-child{font-size:17px;margin:0 0 14px}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding:0}
+.chips li{font-size:13px;font-weight:700;padding:3px 10px;border-radius:6px;background:var(--t);border:1px solid var(--c)}
 table{border-collapse:collapse;width:100%;font-size:15px}
-.facts{margin:0 0 8px}
-.facts th,.facts td{text-align:left;vertical-align:top;padding:7px 0;border-bottom:1px solid var(--line)}
-.facts th{width:64px;color:var(--sub);font-weight:600;white-space:nowrap}
-.proj h3{font-size:16px;margin:28px 0 10px;display:flex;align-items:center;gap:10px}
-.proj h3::after{content:"";flex:1;height:1px;background:var(--line)}
-.proj ul:not(.chips){margin:0;padding-left:1.2em}
-.proj ul:not(.chips) li{margin:0 0 6px}
-.ps{border:1px solid var(--line);border-radius:8px;overflow:hidden;border-collapse:separate;border-spacing:0}
-.ps th{background:#f6f8fb;text-align:left;padding:9px 14px;font-size:14px;color:var(--sub)}
-.ps td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
-.ps td:first-child{width:42%;font-weight:600}
-.proj img{max-width:100%;display:block;border:1px solid var(--line);border-radius:8px}
-.proj small{display:block;color:var(--sub);font-size:14px;margin-top:6px}
-.proj br{display:none}
+.facts th,.facts td{text-align:left;vertical-align:top;padding:6px 0;border-bottom:1px dashed var(--line)}
+.facts th{width:58px;color:var(--sub);font-weight:600;white-space:nowrap}
+.text h3{font-size:15px;margin:24px 0 8px;display:inline-block;padding:1px 10px;border-radius:6px;background:var(--ink);color:#fff}
+.text ul:not(.chips){margin:0;padding-left:1.15em}
+.text ul:not(.chips) li{margin:0 0 6px}
+.ps th{display:none}
+.ps td{padding:9px 0;border-bottom:1px dashed var(--line);vertical-align:top}
+.ps td:first-child{width:44%;font-weight:700;padding-right:14px}
+.ps td:first-child::before{content:"Q ";color:var(--c)}
+.shots p{margin:0}
+.shots img{max-width:100%;display:block;border:1.5px solid var(--ink);border-radius:10px}
+.shots small{display:block;color:var(--sub);font-size:13.5px;margin:6px 0 0}
+.shots br{display:none}
 .row3,.row2,.row1,.row4{display:grid;gap:10px;margin:12px 0 0}
 .row4{grid-template-columns:repeat(4,1fr)}.row3{grid-template-columns:repeat(3,1fr)}.row2{grid-template-columns:repeat(2,1fr)}.row1{grid-template-columns:1fr}
-.row3 img,.row2 img{width:100%;height:150px;object-fit:cover;object-position:top}
-.row3 a:hover img,.row2 a:hover img,.row4 a:hover img,.row1 a:hover img{border-color:var(--accent)}
-footer{color:var(--sub);font-size:14px;text-align:center;padding:8px 0 0}
+.row3 img,.row2 img{width:100%;height:120px;object-fit:cover;object-position:top}
+.shots a:hover img{box-shadow:4px 4px 0 var(--c)}
+footer{text-align:center;color:var(--sub);font-size:14px;padding:0 0 50px}
 
 @media (max-width:900px){
- .page{grid-template-columns:1fr;padding:16px 14px 60px}
- .side{position:static;display:grid;grid-template-columns:auto 1fr;gap:0 20px}
- .side .photo{width:96px;height:128px;grid-row:span 3;margin:0}
- .side .navbox,.side .skillbox{grid-column:1/-1;margin-top:16px}
- .proj{padding:22px 18px}
- .proj h2{font-size:22px}
- .row4{grid-template-columns:repeat(2,1fr)}
- .row3 img,.row2 img{height:96px}
- .ps td:first-child{width:46%}
+ .top .wrap,.win .body{grid-template-columns:1fr}
+ .task nav{gap:12px;font-size:14px}
+ .me .in{display:grid;grid-template-columns:auto 1fr;gap:0 16px}
+ .me img{width:92px;height:122px;grid-row:span 2;margin:0}
+ .me ul{grid-column:1/-1;margin-top:12px}
+ .board{min-height:360px}
+ .cursor{display:none}
+ .win .body{padding:20px 18px 24px;gap:22px}
+ .row4{grid-template-columns:repeat(4,1fr)}
+ .row3 img,.row2 img{height:84px}
+ .ctl{display:none}
 }
 </style>
 </head>
 <body>
-<div class="page">
-<aside class="side">
- <img class="photo" src="img/photo.jpg" alt="이두람">
- <h1>이두람</h1>
- <p class="role">컴퓨터공학 전공 3학년</p>
- <ul class="contact">
-  <li><span>GitHub</span><a href="https://github.com/leeduram">github.com/leeduram</a></li>
-  <li><span>서비스</span><a href="https://2ez4me.win">2ez4me.win</a></li>
-  <li><span>이메일</span><a href="mailto:leeduram1224@gmail.com">leeduram1224@gmail.com</a></li>
- </ul>
- <div class="navbox">
-  <h2>프로젝트</h2>
-  <ul class="nav"><li><a href="#kvm">멀티 PC 통합 제어 프로그램</a><span class="st dev">개발 진행 중</span></li><li><a href="#df">게임 총기 개조 시뮬레이터</a><span class="st run">운영 중</span></li><li><a href="#walk">시각장애인 보행 도우미 앱</a><span class="st done">시제품 완성</span></li><li><a href="#law">법률 리스크 확인 앱</a><span class="st done">완성</span></li><li><a href="#quiz">문제 출제·풀이 프로그램</a><span class="st done">완성</span></li></ul>
+
+<div class="task"><div class="wrap">
+ <strong>이두람</strong>
+ <nav><a href="https://github.com/leeduram">GitHub</a><a href="https://2ez4me.win">2ez4me.win</a><a href="mailto:leeduram1224@gmail.com">이메일</a></nav>
+</div></div>
+
+<header class="top"><div class="wrap">
+ <div class="me">
+  <div class="bar">내 PC</div>
+  <div class="in">
+   <img src="img/photo.jpg" alt="이두람">
+   <div><h1>이두람</h1><p>컴퓨터공학 전공 3학년</p></div>
+   <ul>
+    <li><span>GitHub</span><a href="https://github.com/leeduram">leeduram</a></li>
+    <li><span>서비스</span><a href="https://2ez4me.win">2ez4me.win</a></li>
+    <li><span>이메일</span><a href="mailto:leeduram1224@gmail.com">leeduram1224@gmail.com</a></li>
+   </ul>
+  </div>
  </div>
- <div class="skillbox">
-  <h2>기술</h2>
-  <dl class="skills">
-   <dt>데스크톱</dt><dd>C#, WPF, Windows Forms, Win32 API</dd>
-   <dt>모바일</dt><dd>Flutter, YOLO 객체 인식</dd>
-   <dt>웹·데이터</dt><dd>JavaScript, MySQL, SQLite, PowerShell</dd>
-   <dt>배포·도구</dt><dd>Cloudflare Pages, Git, GitHub</dd>
-  </dl>
+ <div class="board">
+  <div class="bar">화면 배치<small>화면을 누르면 프로젝트로 이동, 끌면 옮겨져요</small></div>
+  <div class="stage" id="stage">
+   <a class="mon" href="#kvm" style="--c:#18a362;--t:#e7f7ef;left:4%;top:10%;width:36%;height:46%"><b>멀티 PC 통합 제어</b><span>C# · WPF</span><em class="st dev">개발 진행 중</em></a>
+   <a class="mon" href="#df" style="--c:#7a4ad8;--t:#f1eafd;left:40%;top:10%;width:34%;height:34%"><b>총기 개조 시뮬레이터</b><span>MySQL · JS</span><em class="st run">운영 중</em></a>
+   <a class="mon" href="#walk" style="--c:#c9a800;--t:#fff8cc;left:74%;top:22%;width:22%;height:44%"><b>보행 도우미 앱</b><span>Flutter · YOLO</span><em class="st done">시제품 완성</em></a>
+   <a class="mon" href="#law" style="--c:#2f5bd3;--t:#e8eefc;left:40%;top:44%;width:34%;height:36%"><b>법률 리스크 확인 앱</b><span>Flutter · Gemini</span><em class="st done">완성</em></a>
+   <a class="mon" href="#quiz" style="--c:#4b6f93;--t:#eaf0f6;left:4%;top:56%;width:36%;height:30%"><b>문제 출제·풀이</b><span>C# · WinForms</span><em class="st done">완성</em></a>
+   <svg class="cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l15 9-7 1.6L9 20z" fill="#14171c" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  </div>
  </div>
-</aside>
-<main>
-<section class="proj" id="kvm">
-<header><h2>멀티 PC 통합 제어 프로그램</h2><span class="st dev">개발 진행 중</span></header>
+</div></header>
+
+<main><div class="wrap">
+<section class="win" id="kvm" style="--c:#18a362;--t:#e7f7ef">
+ <div class="bar"><span class="dot"></span><h2>멀티 PC 통합 제어 프로그램</h2><span class="st dev">개발 진행 중</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+ <div class="body">
+  <div class="text">
 <p>같은 네트워크의 Windows PC 두 대를 키보드와 마우스 하나로 조종합니다. 커서를 화면 끝으로 밀면 상대 PC로 넘어가고, 상대 화면을 보며 조종하거나 파일을 주고받을 수 있습니다.</p>
 <ul class="chips"><li>C#</li><li>.NET 10</li><li>WPF</li><li>Win32 API</li><li>TCP/UDP</li><li>SQLite</li></ul>
 <table class="facts">
@@ -129,13 +161,16 @@ footer{color:var(--sub);font-size:14px;text-align:center;padding:8px 0 0}
    </ul>
 <h3>문제와 해결</h3>
 <table class="ps"><tr><th>문제</th><th>해결</th></tr><tr><td>연결이 끊기면 내 PC의 키보드·마우스가 먹통이 됨</td><td>정상 신호가 2초 동안 없으면 입력 막기를 자동으로 푸는 감시 기능을 넣음</td></tr><tr><td>두 PC가 같은 입력을 끝없이 주고받을 수 있음</td><td>프로그램이 만들어 낸 입력은 가로채지 않고 통과시키도록 설계</td></tr></table>
-<h3>화면</h3>
+</div>
+  <div class="shots">
 <p><a href="img/kvm-viewer.jpg"><img src="img/kvm-viewer.jpg" alt="상대 PC 화면을 창으로 보며 조종하는 화면" loading="lazy"></a><br><small>상대 PC의 화면을 창으로 보면서 조종하는 모습</small></p>
-<div class="row3"><a href="img/kvm-main.jpg"><img src="img/kvm-main.jpg" alt="메인 창" loading="lazy"></a><a href="img/kvm-layout.jpg"><img src="img/kvm-layout.jpg" alt="화면 배치 설정" loading="lazy"></a><a href="img/kvm-history.jpg"><img src="img/kvm-history.jpg" alt="연결 기록" loading="lazy"></a></div><p><small>메인 창, 화면 배치 설정, 연결 기록</small></p>
-
+<div class="row3"><a href="img/kvm-main.jpg"><img src="img/kvm-main.jpg" alt="메인 창" loading="lazy"></a><a href="img/kvm-layout.jpg"><img src="img/kvm-layout.jpg" alt="화면 배치 설정" loading="lazy"></a><a href="img/kvm-history.jpg"><img src="img/kvm-history.jpg" alt="연결 기록" loading="lazy"></a></div><p><small>메인 창, 화면 배치 설정, 연결 기록</small></p></div>
+ </div>
 </section>
-<section class="proj" id="df">
-<header><h2>게임 총기 개조 시뮬레이터</h2><span class="st run">운영 중</span></header>
+<section class="win" id="df" style="--c:#7a4ad8;--t:#f1eafd">
+ <div class="bar"><span class="dot"></span><h2>게임 총기 개조 시뮬레이터</h2><span class="st run">운영 중</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+ <div class="body">
+  <div class="text">
 <p>게임 Delta Force의 총기 개조 화면을 웹에서 그대로 해 볼 수 있습니다. 데이터는 1시간마다 자동으로 갱신됩니다.</p>
 <ul class="chips"><li>PowerShell</li><li>MySQL</li><li>JavaScript</li><li>Node.js</li><li>Cloudflare Pages</li></ul>
 <table class="facts">
@@ -152,13 +187,16 @@ footer{color:var(--sub);font-size:14px;text-align:center;padding:8px 0 0}
    </ul>
 <h3>문제와 해결</h3>
 <table class="ps"><tr><th>문제</th><th>해결</th></tr><tr><td>공식 데이터만으로는 정보가 부족함</td><td>다른 출처의 데이터와 비교해 맞는 쪽 값을 반영</td></tr><tr><td>기본 언어가 중국어라 한국어 이름이 없음</td><td>게임 화면을 직접 찍어 모으고 문자 인식으로 이름 데이터를 만듦</td></tr><tr><td>화면이 느리게 뜸</td><td>이미지를 동시에 불러오고 사이트에 함께 올려 개선</td></tr></table>
-<h3>화면</h3>
+</div>
+  <div class="shots">
 <p><a href="img/df-gunsmith.jpg"><img src="img/df-gunsmith.jpg" alt="총기 개조 화면" loading="lazy"></a><br><small>부품을 고르면 능력치 변화와 총 가격이 바로 계산됩니다</small></p>
-<div class="row1"><a href="img/df-list.jpg"><img src="img/df-list.jpg" alt="무기 목록" loading="lazy"></a></div><p><small>무기 목록</small></p>
-
+<div class="row1"><a href="img/df-list.jpg"><img src="img/df-list.jpg" alt="무기 목록" loading="lazy"></a></div><p><small>무기 목록</small></p></div>
+ </div>
 </section>
-<section class="proj" id="walk">
-<header><h2>시각장애인 보행 도우미 앱</h2><span class="st done">시제품 완성</span></header>
+<section class="win" id="walk" style="--c:#c9a800;--t:#fff8cc">
+ <div class="bar"><span class="dot"></span><h2>시각장애인 보행 도우미 앱</h2><span class="st done">시제품 완성</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+ <div class="body">
+  <div class="text">
 <p>거리 센서 없이 휴대폰 카메라 한 대로 점자블록과 장애물을 인식해 빛과 소리로 알려 줍니다. 처음에는 카메라가 달린 스마트 안경을 구상했고, 같은 구조를 휴대폰으로 옮겨 검증했습니다.</p>
 <ul class="chips"><li>Flutter</li><li>YOLO 객체 인식 모델</li><li>가속도·자이로 센서</li></ul>
 <table class="facts">
@@ -178,13 +216,16 @@ footer{color:var(--sub);font-size:14px;text-align:center;padding:8px 0 0}
     <li>횡단보도와 신호등은 인식률이 낮아 실제로 쓸 수준이 아닙니다.</li>
     <li>야간과 우천 환경은 검증하지 못했습니다.</li>
    </ul>
-<h3>화면</h3>
+</div>
+  <div class="shots">
 <p><a href="img/walk-braille.jpg"><img src="img/walk-braille.jpg" alt="점자블록을 노란 띠로 표시한 화면" loading="lazy"></a><br><small>점자블록을 따라 노란 띠로 표시합니다</small></p>
-<div class="row3"><a href="img/walk-obstacle.jpg"><img src="img/walk-obstacle.jpg" alt="장애물 경고" loading="lazy"></a><a href="img/walk-direction.jpg"><img src="img/walk-direction.jpg" alt="방향 기억" loading="lazy"></a><a href="img/walk-before.jpg"><img src="img/walk-before.jpg" alt="개선 전 인식" loading="lazy"></a></div><p><small>장애물 경고, 방향 기억, 개선 전 인식</small></p>
-
+<div class="row3"><a href="img/walk-obstacle.jpg"><img src="img/walk-obstacle.jpg" alt="장애물 경고" loading="lazy"></a><a href="img/walk-direction.jpg"><img src="img/walk-direction.jpg" alt="방향 기억" loading="lazy"></a><a href="img/walk-before.jpg"><img src="img/walk-before.jpg" alt="개선 전 인식" loading="lazy"></a></div><p><small>장애물 경고, 방향 기억, 개선 전 인식</small></p></div>
+ </div>
 </section>
-<section class="proj" id="law">
-<header><h2>법률 리스크 확인 앱</h2><span class="st done">완성</span></header>
+<section class="win" id="law" style="--c:#2f5bd3;--t:#e8eefc">
+ <div class="bar"><span class="dot"></span><h2>법률 리스크 확인 앱</h2><span class="st done">완성</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+ <div class="body">
+  <div class="text">
 <p>하려는 일을 문장으로 입력하면 관련 법령과 판례를 찾아 쉬운 말로 요약합니다. AI가 없는 판례를 지어내는 문제를 피하려고, 실제로 존재하는 법령과 판례만 보여 주도록 만들었습니다.</p>
 <ul class="chips"><li>Flutter</li><li>Gemini API</li><li>국가법령정보 Open API</li><li>Firebase</li></ul>
 <table class="facts">
@@ -195,12 +236,15 @@ footer{color:var(--sub);font-size:14px;text-align:center;padding:8px 0 0}
 <tr><th>링크</th><td><a href="https://github.com/leeduram/lawcheck">github.com/leeduram/lawcheck</a></td></tr></table>
 <h3>문제와 해결</h3>
 <table class="ps"><tr><th>문제</th><th>해결</th></tr><tr><td>AI는 없는 판례를 지어낼 수 있음</td><td>AI는 검색어 생성과 선별, 요약에만 쓰고 판례와 법령은 공공 API에서만 가져옴</td></tr><tr><td>무관한 판례가 결과에 섞임</td><td>지시문을 여러 번 고쳐 사건명으로 1차, 판시사항으로 2차로 거르게 함</td></tr><tr><td>관련 판례가 없는 경우</td><td>억지로 채우지 않고 0건으로 표시</td></tr></table>
-<h3>화면</h3>
-<div class="row4"><a href="img/law-main.jpg"><img src="img/law-main.jpg" alt="입력 화면" loading="lazy"></a><a href="img/law-result.jpg"><img src="img/law-result.jpg" alt="분석 결과와 법령" loading="lazy"></a><a href="img/law-cases.jpg"><img src="img/law-cases.jpg" alt="관련 판례" loading="lazy"></a><a href="img/law-detail.jpg"><img src="img/law-detail.jpg" alt="판례 상세" loading="lazy"></a></div>
-
+</div>
+  <div class="shots">
+<div class="row4"><a href="img/law-main.jpg"><img src="img/law-main.jpg" alt="입력 화면" loading="lazy"></a><a href="img/law-result.jpg"><img src="img/law-result.jpg" alt="분석 결과와 법령" loading="lazy"></a><a href="img/law-cases.jpg"><img src="img/law-cases.jpg" alt="관련 판례" loading="lazy"></a><a href="img/law-detail.jpg"><img src="img/law-detail.jpg" alt="판례 상세" loading="lazy"></a></div></div>
+ </div>
 </section>
-<section class="proj" id="quiz">
-<header><h2>문제 출제·풀이 프로그램</h2><span class="st done">완성</span></header>
+<section class="win" id="quiz" style="--c:#4b6f93;--t:#eaf0f6">
+ <div class="bar"><span class="dot"></span><h2>문제 출제·풀이 프로그램</h2><span class="st done">완성</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+ <div class="body">
+  <div class="text">
 <p>문제집을 만들어 파일로 저장하고, 불러와서 풀고, 채점 결과를 문제별로 확인합니다. 화면이 있는 프로그램으로는 처음 만든 것입니다.</p>
 <ul class="chips"><li>C#</li><li>Windows Forms</li><li>JSON</li></ul>
 <table class="facts">
@@ -214,14 +258,36 @@ footer{color:var(--sub);font-size:14px;text-align:center;padding:8px 0 0}
     <li><strong>풀이와 채점.</strong> 풀 때마다 순서를 섞고 시간을 재며, 유형별 규칙으로 채점합니다.</li>
     <li><strong>구조.</strong> 유형마다 공통 부모 클래스를 상속해 새 유형을 추가하기 쉽게 만들었습니다.</li>
    </ul>
-<h3>화면</h3>
-<p><a href="img/quiz-grading.jpg"><img src="img/quiz-grading.jpg" alt="채점 결과 화면" loading="lazy"></a><br><small>채점 결과에서 고른 답과 정답을 색으로 구분합니다</small></p>
-<div class="row3"><a href="img/quiz-edit.jpg"><img src="img/quiz-edit.jpg" alt="문제 만들기" loading="lazy"></a><a href="img/quiz-solve.jpg"><img src="img/quiz-solve.jpg" alt="풀이 화면" loading="lazy"></a><a href="img/quiz-main.jpg"><img src="img/quiz-main.jpg" alt="메인 화면" loading="lazy"></a></div><p><small>문제 만들기, 풀이 화면, 메인 화면</small></p>
-
-
-</section>
-<footer>이두람, leeduram1224@gmail.com</footer>
-</main>
 </div>
+  <div class="shots">
+<p><a href="img/quiz-grading.jpg"><img src="img/quiz-grading.jpg" alt="채점 결과 화면" loading="lazy"></a><br><small>채점 결과에서 고른 답과 정답을 색으로 구분합니다</small></p>
+<div class="row3"><a href="img/quiz-edit.jpg"><img src="img/quiz-edit.jpg" alt="문제 만들기" loading="lazy"></a><a href="img/quiz-solve.jpg"><img src="img/quiz-solve.jpg" alt="풀이 화면" loading="lazy"></a><a href="img/quiz-main.jpg"><img src="img/quiz-main.jpg" alt="메인 화면" loading="lazy"></a></div><p><small>문제 만들기, 풀이 화면, 메인 화면</small></p></div>
+ </div>
+</section>
+</div></main>
+
+<footer>이두람, leeduram1224@gmail.com</footer>
+
+<script>
+// 화면 배치: 모니터를 끌어 옮기기 (조금만 움직이면 클릭으로 처리)
+(function(){
+ var stage=document.getElementById('stage');
+ stage.querySelectorAll('.mon').forEach(function(m){
+  var sx,sy,ox,oy,moved=false,on=false;
+  m.addEventListener('pointerdown',function(e){on=true;moved=false;sx=e.clientX;sy=e.clientY;ox=m.offsetLeft;oy=m.offsetTop;m.setPointerCapture(e.pointerId);});
+  m.addEventListener('pointermove',function(e){
+   if(!on)return;var dx=e.clientX-sx,dy=e.clientY-sy;
+   if(!moved&&Math.abs(dx)+Math.abs(dy)<6)return;
+   moved=true;m.classList.add('drag');
+   var x=Math.max(0,Math.min(stage.clientWidth-m.offsetWidth,ox+dx)),y=Math.max(0,Math.min(stage.clientHeight-m.offsetHeight,oy+dy));
+   m.style.left=x+'px';m.style.top=y+'px';
+  });
+  function end(){on=false;m.classList.remove('drag');}
+  m.addEventListener('pointerup',end);m.addEventListener('pointercancel',end);
+  m.addEventListener('click',function(e){if(moved){e.preventDefault();moved=false;}});
+  m.addEventListener('dragstart',function(e){e.preventDefault();});
+ });
+})();
+</script>
 </body>
 </html>
